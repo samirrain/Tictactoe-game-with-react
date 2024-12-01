@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 
 # for you empty template 
-
+<!-- 
 import React from 'react'
 
 const App = () => {
@@ -50,4 +50,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App -->
