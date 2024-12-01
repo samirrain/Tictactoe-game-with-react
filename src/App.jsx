@@ -22,82 +22,117 @@ const App = () => {
     const [winnername, setwinnername] = useState("")
     const [gamedraw, setgamedraw] = useState(false)
 
-    const checkWinner = ()=>{
-
-      // horizontal part 
-
-    if(boxes[0] && boxes[0] === boxes[1] && boxes[0] === boxes[2]){
-      console.log(`winner is ${boxes[0]}`)
-      setiswinner(true)
-      setwinnername(boxes[0])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-    else if(boxes[3] && boxes[3] === boxes[4] && boxes[3] === boxes[5]){
-      console.log(`winner is ${boxes[3]}`)
-      setiswinner(true)
-      setwinnername(boxes[3])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-    else if(boxes[6] && boxes[6] === boxes[7] && boxes[6] === boxes[8]){
-      console.log(`winner is ${boxes[6]}`)
-      setiswinner(true)
-      setwinnername(boxes[6])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-
-    // vertical part 
-
-    else if(boxes[0] && boxes[0] === boxes[3] && boxes[0] === boxes[6]){
-      console.log(`winner is ${boxes[0]}`)
-      setiswinner(true)
-      setwinnername(boxes[0])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-    else if(boxes[1] && boxes[1] === boxes[4] && boxes[1] === boxes[7]){
-      console.log(`winner is ${boxes[1]}`)
-      setiswinner(true)
-      setwinnername(boxes[1])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-    else if(boxes[2] && boxes[2] === boxes[5] && boxes[2] === boxes[8]){
-      console.log(`winner is ${boxes[2]}`)
-      setiswinner(true)
-      setwinnername(boxes[2])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-
-// diagonal part
-    else if(boxes[0] && boxes[0] === boxes[4] && boxes[0] === boxes[8]){
-      console.log(`winner is ${boxes[0]}`)
-      setiswinner(true)
-      setwinnername(boxes[0])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
-    else if(boxes[2] && boxes[2] === boxes[4] && boxes[2] === boxes[6]){
-      console.log(`winner is ${boxes[2]}`)
-      setiswinner(true)
-      setwinnername(boxes[2])
-      setboxes(new Array(9).fill(""))
-     return ;
-    }
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
 
 
-    else if (!boxes.includes("")){
+//     const checkWinner = ()=>{
+
+//       // horizontal part 
+
+//     if(boxes[0] && boxes[0] === boxes[1] && boxes[0] === boxes[2]){
+//       console.log(`winner is ${boxes[0]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[0])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+//     else if(boxes[3] && boxes[3] === boxes[4] && boxes[3] === boxes[5]){
+//       console.log(`winner is ${boxes[3]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[3])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+//     else if(boxes[6] && boxes[6] === boxes[7] && boxes[6] === boxes[8]){
+//       console.log(`winner is ${boxes[6]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[6])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+
+//     // vertical part 
+
+//     else if(boxes[0] && boxes[0] === boxes[3] && boxes[0] === boxes[6]){
+//       console.log(`winner is ${boxes[0]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[0])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+//     else if(boxes[1] && boxes[1] === boxes[4] && boxes[1] === boxes[7]){
+//       console.log(`winner is ${boxes[1]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[1])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+//     else if(boxes[2] && boxes[2] === boxes[5] && boxes[2] === boxes[8]){
+//       console.log(`winner is ${boxes[2]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[2])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+
+// // diagonal part
+//     else if(boxes[0] && boxes[0] === boxes[4] && boxes[0] === boxes[8]){
+//       console.log(`winner is ${boxes[0]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[0])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+//     else if(boxes[2] && boxes[2] === boxes[4] && boxes[2] === boxes[6]){
+//       console.log(`winner is ${boxes[2]}`)
+//       setiswinner(true)
+//       setwinnername(boxes[2])
+//       setboxes(new Array(9).fill(""))
+//      return ;
+//     }
+
+
+//     else if (!boxes.includes("")){
+//       console.log(`game draw`)
+      
+//       setgamedraw(true)
+//       setboxes(new Array(9).fill(""))
+//     }
+
+//     }
+
+const checkWinner = ()=>{
+
+for(const line of lines){
+  const [a,b,c] = line
+
+  if( boxes[a] &&  boxes[a] ===  boxes[b] &&  boxes[a]=== boxes[c]){
+    setiswinner(true)
+          setwinnername(boxes[a])
+          setboxes(new Array(9).fill(""))
+         return ;
+  }
+}
+
+     if (!boxes.includes("")){
       console.log(`game draw`)
       
       setgamedraw(true)
       setboxes(new Array(9).fill(""))
     }
 
-    }
+return null;
 
+}
 
     const clickBox = (getindex)=>{
 
